@@ -41,11 +41,11 @@ export default function Navbar() {
         id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
-        open={Boolean(anchorE1)}
+        open={Boolean(anchorEl)}
         onClose={handleClose}>
-          <MenuItem onClick={<NavLink to="/"></NavLink>}>Home</MenuItem>
-          <MenuItem onClick={<NavLink to="/Projects"></NavLink>}>Projects</MenuItem>
-          <MenuItem onClick={<NavLink to="/About"></NavLink>} >About</MenuItem>
+          <MenuItem component={NavLink} to="/" onClick={handleClose}>Home</MenuItem>
+          <MenuItem component={NavLink} to="/Projects" onClick={handleClose}>Projects</MenuItem>
+          <MenuItem component={NavLink} to="/About" onClick={handleClose}>About</MenuItem>
       </Menu>
       <Typography variant="h6" className={classes.title}>
         {window.location.pathname.substring(1)}
