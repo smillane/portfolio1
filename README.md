@@ -1,3 +1,3 @@
 # Portfolio Webite
 
-Built using react and sanity
+Built using React.js, MaterialUI, and Sanity

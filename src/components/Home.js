@@ -1,17 +1,16 @@
 import React from 'react';
 import { CssBaseline, makeStyles } from "@material-ui/core";
-import image from "../images/birdgrass.jpg";
 
 const useStyles = makeStyles({
     root: {
         minHeight: '100vh',
-        backgroundimage: `url(${image})`,
+        backgroundimage: `url(${process.env.PUBLIC_URL + '/images/birdgrass.jpg'})`,
         backgroundRepeat: 'no-repeat',
         backgroundsize: 'cover', 
     },
     textStyle: {
         textAlign: 'center',
-    }
+    },
 });
 
 export default function Home() {
