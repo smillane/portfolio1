@@ -12,7 +12,19 @@ export default {
       type: 'datetime',
     },
     {
-      name: 'description',
+      name: 'description1',
+      type: 'text',
+    },
+    {
+      name: 'description2',
+      type: 'text',
+    },
+    {
+      name: 'description3',
+      type: 'text',
+    },
+    {
+      name: 'description4',
       type: 'text',
     },
     {

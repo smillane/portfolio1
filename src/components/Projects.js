@@ -5,19 +5,24 @@ import { Grid, makeStyles, Paper } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        overflow: 'hidden',
+        padding: theme.spacing(0, 3),
     },
     gridStyling: {
         padding: theme.spacing(1),
         margin: theme.spacing(1),
     },
     paperStyling: {
+        margin: `${theme.spacing(1)}px auto`,
         padding: theme.spacing(3),
-        color: theme.palette.text.secondary
     },
     headerStyling: {
         textAlign: 'center',
         padding: '1em',
     },
+    preOverFlow: {
+        overflow: 'visible',
+    }
 }));
 
 export default function Projects() {
@@ -28,8 +33,10 @@ export default function Projects() {
         sanityClient.fetch(`*[_type == 'project']{
             title,
             date,
-            description,
-            projectType,
+            description1,
+            description2,
+            description3,
+            description4,
             link,
         }`).then((data) => setProjectData(data))
         .catch(console.error);
@@ -50,8 +57,10 @@ export default function Projects() {
                 </h3>
                 <div>
                     <p>Completed on {new Date(project.date).toLocaleDateString()}</p>
-                    <p>Project Type:{" "} {project.projectType}</p>
-                    <p>{project.description}</p>
+                    <p>{project.description1}</p>
+                    <p>{project.description2}</p>
+                    <p>{project.description3}</p>
+                    <p>{project.description4}</p>
                     <a href = {project.link} rel = 'noopener noreferrer' target = '_blank'>View this project</a>
                 </div>
             </Paper>

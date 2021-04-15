@@ -1,60 +1,86 @@
 import React from 'react';
+import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, IconButton, MenuItem } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, IconButton, List, ListItem, Button, Drawer, ListItemText } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import Menu from '@material-ui/core/Menu';
 import { makeStyles } from '@material-ui/core/styles';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
+const useStyles = makeStyles({
+  list: {
+    width: 250,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+  fullList: {
+    width: 'auto',
+  },  
   title: {
     flexGrow: 1,
   },
-}));
-
+});
+  
 export default function Navbar() {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const list = (anchor) => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+          <ListItem button component={NavLink} to='/' >
+            <ListItemText primary='Home'/>
+          </ListItem>
+          <ListItem button component={NavLink} to='/Projects' >
+            <ListItemText primary='Projects'/>
+          </ListItem>
+          <ListItem button component={NavLink} to='/About' >
+            <ListItemText primary='About'/>
+          </ListItem>
+      </List>
+    </div>
+  );
   
   return (
   <AppBar position="static">
     <Toolbar>
-      <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        <MenuIcon />
-      </IconButton>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}>
-          <MenuItem component={NavLink} to="/" onClick={handleClose}>Home</MenuItem>
-          <MenuItem component={NavLink} to="/Projects" onClick={handleClose}>Projects</MenuItem>
-          <MenuItem component={NavLink} to="/About" onClick={handleClose}>About</MenuItem>
-      </Menu>
+      <div>
+        {['left'].map((anchor) => (
+          <React.Fragment key={anchor}>
+            <Button onClick={toggleDrawer(anchor, true)}><MenuIcon color='inherit' /></Button>
+            <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+              {list(anchor)}
+            </Drawer>
+          </React.Fragment>
+        ))}
+      </div>
       <Typography variant="h6" className={classes.title}>
         {window.location.pathname.substring(1)}
       </Typography>
       <IconButton aria-label="Linkedin.com" color="inherit" onClick={() => window.open("https://www.linkedin.com/in/smillane/")}>
-        <LinkedInIcon></LinkedInIcon>
+        <LinkedInIcon />
       </IconButton>
       <IconButton aria-label="Github.com" color="inherit" onClick={() => window.open("https://github.com/smillane")}>
-        <GitHubIcon></GitHubIcon>
+        <GitHubIcon />
       </IconButton>
     </Toolbar>
   </AppBar>

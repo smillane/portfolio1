@@ -5,12 +5,13 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Navbar from './components/Navbar';
 
+
 function App() {
   return (
     <BrowserRouter>
     <Navbar />
       <Switch>
-        <Route component={Home} path='/' exact />
+        <Route component={Home} path='/' exact/>
         <Route component={About} path='/about' />
         <Route component={Projects} path='/projects' />
       </Switch>
