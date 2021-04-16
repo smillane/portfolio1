@@ -36,7 +36,7 @@ export default function Home() {
             justify = 'center'
             style={{ minHeight: '35vh' }}
             >
-                <Grid item xs={6}>
+                <Grid item xs={8} sm={6} md={4} lg={5} xl={3} >
                     <Card className = {classes.cardStyling} variant='elevation' elevation='10'>
                         <CardContent className = {classes.textStyle}>
                             <Typography variant='h3' align='center' gutterBottom>Sean Millane</Typography>
