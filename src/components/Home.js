@@ -1,33 +1,51 @@
 import React from 'react';
-import { CssBaseline, makeStyles } from "@material-ui/core";
+import { makeStyles, Grid, Typography, Card, CardContent } from "@material-ui/core";
 import heroImage from '../images/birdgrass.jpg';
-import "../index.css"
 
 const useStyles = makeStyles( {
     root: {
-        minHeight: '100vh',
-        minWidth: '100vh',
-        backgroundimage: `url(${heroImage})`,
+        backgroundImage: `url(${heroImage})`,
         backgroundRepeat: 'no-repeat',
         backgroundsize: 'cover',
-        margin: 'auto',
-        backgroundPosition: 'center',
+        backgroundPosition: 'center top',
+        minHeight: '100vh',
+        minWidth: '10vh',
     },
     textStyle: {
         textAlign: 'center',
+        verticalAlign: 'middle',
+        position: 'relative',
+        minHeight: '50%',
+        color: 'white',
+        paddingTop: '10%',
     },
+    cardStyling: {
+        alignItems: 'center',
+        backgroundColor: 'rgba(255,255,255,0.1)',
+    }
 });
 
 export default function Home() {
     const classes = useStyles();
-    return (        
-        <homepage className={classes.root}>
-            <CssBaseline />
-            <section className={classes.textStyle}>
-                <h1>Sean Millane</h1>
-                <h2>Highly motivated self-taught software engineer with a passion for software development and technology.</h2>
-                <h2>Detail-oriented civil engineer looking to transition to software engineering.</h2>
-            </section>
-        </homepage>
+    return (
+        <main className = {classes.root}>
+            <Grid
+            container
+            spacing = {0}
+            alignItems = 'center'
+            justify = 'center'
+            style={{ minHeight: '35vh' }}
+            >
+                <Grid item xs={5}>
+                    <Card className = {classes.cardStyling} variant='elevation' elevation='10'>
+                        <CardContent className = {classes.textStyle}>
+                            <Typography variant='h3' align='center' gutterBottom>Sean Millane</Typography>
+                            <Typography variant='h5' align='center' gutterBottom>Highly motivated, self-taught software engineer with a passion for software development and technology.</Typography>
+                            <Typography variant='h5' align='center' gutterBottom>Detail-oriented civil engineer looking to transition to software engineering.</Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </Grid>
+        </main>
     );
 }

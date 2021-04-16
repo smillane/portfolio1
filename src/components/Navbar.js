@@ -1,13 +1,22 @@
 import React from 'react';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, IconButton, List, ListItem, Button, Drawer, ListItemText } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, IconButton, List, ListItem, Drawer, ListItemText, CssBaseline } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 
 const useStyles = makeStyles({
+  root: {
+    alignItems: 'center',
+  },
+  alignRight: {
+    alignItems: 'right'
+  },
+  alignLeft: {
+    alignItems: 'left'
+  },
   list: {
     width: 250,
   },
@@ -61,28 +70,29 @@ export default function Navbar() {
   );
   
   return (
-  <AppBar position="static">
-    <Toolbar>
-      <div>
-        {['left'].map((anchor) => (
-          <React.Fragment key={anchor}>
-            <Button onClick={toggleDrawer(anchor, true)}><MenuIcon color='inherit' /></Button>
-            <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-              {list(anchor)}
-            </Drawer>
-          </React.Fragment>
-        ))}
-      </div>
-      <Typography variant="h6" className={classes.title}>
-        {window.location.pathname.substring(1)}
-      </Typography>
-      <IconButton aria-label="Linkedin.com" color="inherit" onClick={() => window.open("https://www.linkedin.com/in/smillane/")}>
-        <LinkedInIcon />
-      </IconButton>
-      <IconButton aria-label="Github.com" color="inherit" onClick={() => window.open("https://github.com/smillane")}>
-        <GitHubIcon />
-      </IconButton>
-    </Toolbar>
-  </AppBar>
+    <AppBar position="static" color='transparent'>
+      <CssBaseline />
+      <Toolbar>
+        <div>
+          {['left'].map((anchor) => (
+            <React.Fragment key={anchor}>
+              <IconButton onClick={toggleDrawer(anchor, true)}><MenuIcon color='inherit' /></IconButton>
+              <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+                {list(anchor)}
+              </Drawer>
+            </React.Fragment>
+          ))}
+        </div>
+        <Typography variant="h6" className={classes.title}>
+          {window.location.pathname.substring(1)}
+        </Typography>
+        <IconButton aria-label="Linkedin.com" color="inherit" onClick={() => window.open("https://www.linkedin.com/in/smillane/")}>
+          <LinkedInIcon />
+        </IconButton>
+        <IconButton aria-label="Github.com" color="inherit" onClick={() => window.open("https://github.com/smillane")}>
+          <GitHubIcon />
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   );
 }

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import sanityClient from '../client.js';
-import { Grid, makeStyles, Paper } from '@material-ui/core';
+import { Button, CssBaseline, Grid, makeStyles, Paper, Typography, Card, CardContent } from '@material-ui/core';
+import heroImage from '../images/ladybug.jpg';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -13,15 +15,24 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
     },
     paperStyling: {
-        margin: `${theme.spacing(1)}px auto`,
-        padding: theme.spacing(3),
-    },
-    headerStyling: {
-        textAlign: 'center',
-        padding: '1em',
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(3),
+        paddingTop: theme.spacing(),
+        paddingBottom: theme.spacing(2),
     },
     preOverFlow: {
         overflow: 'visible',
+    },
+    mainBackground: {
+        backgroundImage: `url(${heroImage})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundsize: 'cover',
+        backgroundPosition: 'center top',
+        minHeight: '100vh',
+        minWidth: '10vh',
+    },
+    cardStyling: {
+        backgroundColor: 'rgba(255,255,255,0.7)',
     }
 }));
 
@@ -43,41 +54,52 @@ export default function Projects() {
     }, []);
 
     const displayprojects = projectData && projectData.map((project, index) => (
-        <Grid item xs={4} key={index} className = {classes.gridStyling}>
-            <Paper className = {classes.paperStyling}>
-                <h3>
-                    <a 
-                        href = {project.link}
-                        alt = {project.title}
-                        target = '_blank'
-                        rel = 'noopener noreferrer'
-                    >
-                        {project.title}
-                    </a>
-                </h3>
-                <div>
-                    <p>Completed on {new Date(project.date).toLocaleDateString()}</p>
-                    <p>{project.description1}</p>
-                    <p>{project.description2}</p>
-                    <p>{project.description3}</p>
-                    <p>{project.description4}</p>
-                    <a href = {project.link} rel = 'noopener noreferrer' target = '_blank'>View this project</a>
-                </div>
+        <Grid item xs={8} sm={6} md={4} lg={3} xl={3} key={index} className = {classes.gridStyling}>
+            <Paper className = {classes.paperStyling} variant='elevation' elevation='10'>
+                <Typography variant='h4' align='justify' href = {project.link} alt = {project.title} target = '_blank' rel = 'noopener noreferrer'>
+                    {project.title}
+                </Typography>
+                <Typography align='justify' gutterBottom>
+                    Completed on {new Date(project.date).toLocaleDateString()}
+                </Typography>
+                <Typography gutterBottom>{project.description1}</Typography>
+                <Typography gutterBottom>{project.description2}</Typography>
+                <Typography gutterBottom>{project.description3}</Typography>
+                <Typography gutterBottom>{project.description4}</Typography>
+                <Button aria-label="Github.com" href = {project.link} rel = 'noopener noreferrer' target = '_blank' endIcon>
+                    View this project <GitHubIcon />
+                </Button>
             </Paper>
         </Grid>
     ));
 
     return (
-        <main>
-            <section>                
-                <h1 className = {classes.headerStyling}>My Projects</h1>
+        <main className = {classes.mainBackground}>
+            <CssBaseline />
+            <section>
+                <Grid
+                container
+                spacing = {0}
+                alignItems = 'center'
+                justify = 'center'
+                style={{ minHeight: '20vh' }}
+                >
+                    <Grid item xs={10} sm={8} md={6} lg={4} xl={3} >
+                        <Card className = {classes.cardStyling}>
+                            <CardContent className = {classes.textStyle}>
+                                <Typography variant='h1' align='center' color='inherit'>My Projects</Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                </Grid>
                 <section className = {classes.root}>
                     <Grid 
                         container
                         direction = 'row'
+                        wrap = 'wrap'
                         justify = 'center'
                         alignItems = 'center'
-                        spacing = {3}
+                        spacing = {0}
                     >
                         {displayprojects}
                     </Grid>
