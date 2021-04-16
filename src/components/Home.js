@@ -5,6 +5,7 @@ import heroImage from '../images/birdgrass.jpg';
 const useStyles = makeStyles( {
     root: {
         backgroundImage: `url(${heroImage})`,
+        backgroundColor: '#857E76',
         backgroundRepeat: 'no-repeat',
         backgroundsize: 'cover',
         backgroundPosition: 'center top',
