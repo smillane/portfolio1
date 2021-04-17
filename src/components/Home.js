@@ -37,7 +37,7 @@ export default function Home() {
     const mobileLastName = <Typography variant='h3' align='center' gutterBottom>Millane</Typography>;
     const NamePlacement = <Typography variant='h3' align='center' gutterBottom>Sean Millane</Typography>;
     const deviceNamePlacement = window.innerWidth >= 650 ? NamePlacement : mobileFirstName && mobileLastName;
-    const deviceCardStyling = window.innerWidth >= 650 ? classes.mobileCardStyling : classes.normalCardStyling;
+    const deviceCardStyling = window.innerWidth >= 650 ? classes.normalCardStyling : classes.mobileCardStyling;
     return (
         <main className = {classes.root}>
             <Grid
