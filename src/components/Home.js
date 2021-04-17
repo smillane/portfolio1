@@ -25,10 +25,10 @@ const useStyles = makeStyles( {
         backgroundColor: 'rgba(255,255,255,0.1)',
     },
     mobileCardStyling: {
-        alignItems: 'center',
-        backgroundColor: 'rgba(255,255,255,0.1)',
-        width: '100vh',
-    }
+        width: '100%',
+    },
+    normalCardStyling: {
+    },
 });
 
 export default function Home() {
@@ -37,7 +37,7 @@ export default function Home() {
     const mobileLastName = <Typography variant='h3' align='center' gutterBottom>Millane</Typography>;
     const NamePlacement = <Typography variant='h3' align='center' gutterBottom>Sean Millane</Typography>;
     const deviceNamePlacement = window.innerWidth >= 650 ? NamePlacement : mobileFirstName && mobileLastName;
-    const deviceCardStyling = window.innerWidth >= 650 ? classes.cardStyling : classes.mobileCardStyling;
+    const deviceCardStyling = window.innerWidth >= 650 ? classes.mobileCardStyling : classes.normalCardStyling;
     return (
         <main className = {classes.root}>
             <Grid
@@ -47,8 +47,8 @@ export default function Home() {
             justify = 'center'
             style={{ height: '35vh' }}
             >
-                <Grid item xs={8} sm={6} md={4} lg={5} xl={3} >
-                    <Card className={deviceCardStyling} variant='elevation' elevation='10'>
+                <Grid item xs={8} sm={6} md={4} lg={5} xl={3} className={deviceCardStyling} >
+                    <Card className={classes.cardStyling} variant='elevation' elevation='10'>
                         <CardContent className = {classes.textStyle}>
                             {deviceNamePlacement}
                             <Typography variant='h5' align='center' gutterBottom>Highly motivated, self-taught software engineer with a passion for software development and technology.</Typography>
