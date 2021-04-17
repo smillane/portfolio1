@@ -27,13 +27,13 @@ const useStyles = makeStyles( {
     mobileCardStyling: {
         alignItems: 'center',
         backgroundColor: 'rgba(255,255,255,0.1)',
-        width: '100%',
+        minWidth: '100vh',
     },
 });
 
 export default function Home() {
     const classes = useStyles();
-    const deviceCardStyling = window.innerWidth >= 650 ? classes.cardStyling : classes.mobileCardStyling;
+    const deviceCardStyling = window.innerWidth >= 650 ? '100%' : 'auto';
     return (
         <main className = {classes.root}>
             <Grid
@@ -41,10 +41,11 @@ export default function Home() {
             spacing = {0}
             alignItems = 'center'
             justify = 'center'
-            style={{ paddingTop: '5%' }}
+            width={deviceCardStyling}
+            style={{ paddingTop: '5%'}}
             >
                 <Grid item xs={8} sm={6} md={4} lg={5} xl={3}>
-                    <Card className={deviceCardStyling} variant='elevation' elevation='10'>
+                    <Card className={classes.cardStyling} variant='elevation' elevation='10'>
                         <CardContent className = {classes.textStyle}>
                         <Typography variant='h3' align='center' gutterBottom>Sean Millane</Typography>
                             <Typography variant='h5' align='center' gutterBottom>Highly motivated, self-taught software engineer with a passion for software development and technology.</Typography>
