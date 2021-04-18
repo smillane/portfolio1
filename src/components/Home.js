@@ -8,7 +8,7 @@ const useStyles = makeStyles( {
         backgroundColor: '#3896A6',
         backgroundRepeat: 'no-repeat',
         backgroundsize: 'cover',
-        backgroundPosition: 'center top',
+        backgroundPosition: 'center',
         minHeight: '90vh',
     },
     textStyle: {

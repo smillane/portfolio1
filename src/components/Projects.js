@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react";
 import sanityClient from '../client.js';
-import { Button, CssBaseline, Grid, makeStyles, Paper, Typography, Card, CardContent } from '@material-ui/core';
+import { Box, Button, CssBaseline, Grid, makeStyles, Paper, Typography, Card, CardContent } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import heroImage from '../images/projects2.jpg';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
         overflow: 'hidden',
-    },
-    gridStyling: {
-        padding: theme.spacing(1),
-        margin: theme.spacing(1),
+        display: 'flex',
+        alignItems: 'baseline',
+        justifyContent: 'center',
     },
     preOverFlow: {
         overflow: 'visible',
     },
     mainBackground: {
-        backgroundImage: `url(${heroImage})`,
         backgroundRepeat: 'no-repeat',
         backgroundsize: '100%',
         backgroundPosition: 'center top',
@@ -35,14 +31,14 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(3),
     },
     vwSizing: {
-        width: '80vw',
+        width: '70vw',
     },
 }));
 
 export default function Projects() {
     const classes = useStyles();
     const deviceCardStyling = window.innerWidth >= 650 ? '100%' : 'auto';
-    const deviceContainerStyling = window.innerWidth >= 650 ? '80%' : 'auto';
+    const deviceContainerStyling = window.innerWidth >= 650 ? '80%' : '100%';
     const deviceBackgroundSyling = window.innerWidth >= 650 ? 'no-repeat' : 'repeat-y';
     const [projectData, setProjectData] = useState(null);
 
@@ -60,27 +56,24 @@ export default function Projects() {
     }, []);
 
     const displayprojects = projectData && projectData.map((project, index) => (
-        <Grid item width={deviceCardStyling} key={index} className = {classes.gridStyling}>
-            <Paper className = {classes.projectCardStyling} variant='elevation' elevation='10'>
-                <Typography variant='h4' align='justify' href = {project.link} alt = {project.title} target = '_blank' rel = 'noopener noreferrer'>
+        <Box m={1} p={1} width={deviceCardStyling} key={index}>
+            <Paper className={classes.projectCardStyling} variant='elevation' elevation='10'>
+                <Typography gutterBottom variant='h4' align='justify' href={project.link} alt={project.title} target = '_blank' rel = 'noopener noreferrer'>
                     {project.title}
-                </Typography>
-                <Typography align='justify' gutterBottom>
-                    Completed on {new Date(project.date).toLocaleDateString()}
                 </Typography>
                 <Typography gutterBottom>{project.description1}</Typography>
                 <Typography gutterBottom>{project.description2}</Typography>
                 <Typography gutterBottom>{project.description3}</Typography>
                 <Typography gutterBottom>{project.description4}</Typography>
-                <Button aria-label="Github.com" href = {project.link} rel = 'noopener noreferrer' target = '_blank' endIcon>
+                <Button aria-label="Github.com" href={project.link} rel = 'noopener noreferrer' target = '_blank' endIcon>
                     View this project <GitHubIcon />
                 </Button>
             </Paper>
-        </Grid>
+        </Box>
     ));
 
     return (
-        <main className={classes.mainBackground} style={{ backgroundsize: deviceBackgroundSyling}}>
+        <main className={classes.mainBackground} style={{ backgroundsize: deviceBackgroundSyling, backgroundColor: '#243F4E'}}>
             <div className={classes.vwSizing}>
             <CssBaseline />
                 <div width={deviceContainerStyling}>
@@ -89,9 +82,9 @@ export default function Projects() {
                     spacing = {0}
                     alignItems = 'center'
                     justify = 'center'
-                    style={{ minHeight: '20vh' }}
+                    style={{ minHeight: '20vh'}}
                     >
-                        <Grid item width={deviceCardStyling}>
+                        <Grid p={1} item width={deviceCardStyling}>
                             <Card className = {classes.cardStyling}>
                                 <CardContent>
                                     <Typography variant='h1' align='center' color='inherit'>My Projects</Typography>
@@ -99,17 +92,10 @@ export default function Projects() {
                             </Card>
                         </Grid>
                     </Grid>
-                    <section className = {classes.root}>
-                        <Grid 
-                            container
-                            direction = 'row'
-                            wrap = 'wrap'
-                            justify = 'center'
-                            alignItems = 'center'
-                            spacing = {0}
-                        >
+                    <section className = {classes.root} style={{ minHeight: '20vh'}}>
+                        <Box display="flex" flexDirection="row" flexWrap="wrap" justifyContent="center" m={1} p={1} css={{ maxWidth: 800 }}>
                             {displayprojects}
-                        </Grid>
+                        </Box>
                     </section>
                 </div>
         </div>
