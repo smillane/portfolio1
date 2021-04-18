@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import sanityClient from '../client.js';
 import { Button, CssBaseline, Grid, makeStyles, Paper, Typography, Card, CardContent } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import heroImage from '../images/7fvkuquslyk51.jpg';
+import heroImage from '../images/projects2.jpg';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -12,9 +12,6 @@ const useStyles = makeStyles((theme) => ({
     gridStyling: {
         padding: theme.spacing(1),
         margin: theme.spacing(1),
-    },
-    paperStyling: {
-        padding: theme.spacing(3),
     },
     preOverFlow: {
         overflow: 'visible',
@@ -32,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
     },
     cardStyling: {
         backgroundColor: 'rgba(255,255,255,0.7)',
+        padding: theme.spacing(3),
+    },
+    projectCardStyling: {
         padding: theme.spacing(3),
     },
     vwSizing: {
@@ -61,7 +61,7 @@ export default function Projects() {
 
     const displayprojects = projectData && projectData.map((project, index) => (
         <Grid item width={deviceCardStyling} key={index} className = {classes.gridStyling}>
-            <Paper className = {classes.paperStyling} variant='elevation' elevation='10'>
+            <Paper className = {classes.projectCardStyling} variant='elevation' elevation='10'>
                 <Typography variant='h4' align='justify' href = {project.link} alt = {project.title} target = '_blank' rel = 'noopener noreferrer'>
                     {project.title}
                 </Typography>

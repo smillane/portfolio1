@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent, makeStyles, Typography, Grid } from "@material-ui/core";
-import heroImage from '../images/7fvkuquslyk51.jpg';
+import heroImage from '../images/about.jpg';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,7 +40,7 @@ export default function About() {
                     <Card className = {classes.cardStyling} variant='elevation' elevation='10'>
                         <CardContent className = {classes.textStyle}>
                             <Typography variant='h4' align='left' gutterBottom>My hobbies include cooking, gaming, bouldering, reading, running, programming, and building computers.</Typography>
-                            <Typography variant='h4' align='left' gutterBottom>I have my hands full with 3 dogs. A husky, english shephard, and a boxer/lab mix.</Typography>
+                            <Typography variant='h4' align='left' gutterBottom>I have my hands full with 3 dogs. A husky, english shepherd, and a boxer/lab mix.</Typography>
                         </CardContent>
                     </Card>
                 </Grid>

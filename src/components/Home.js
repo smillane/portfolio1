@@ -1,16 +1,15 @@
 import React from 'react';
 import { makeStyles, Grid, Typography, Card, CardContent } from "@material-ui/core";
-import heroImage from '../images/7fvkuquslyk51.jpg';
+import heroImage from '../images/home.jpg';
 
 const useStyles = makeStyles( {
     root: {
         backgroundImage: `url(${heroImage})`,
-        backgroundColor: '#DDE0D5',
+        backgroundColor: '#3896A6',
         backgroundRepeat: 'no-repeat',
         backgroundsize: 'cover',
         backgroundPosition: 'center top',
-        minHeight: '100vh',
-        minWidth: '10vh',
+        minHeight: '90vh',
     },
     textStyle: {
     },
