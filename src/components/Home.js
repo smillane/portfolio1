@@ -13,16 +13,11 @@ const useStyles = makeStyles( {
         minWidth: '10vh',
     },
     textStyle: {
-        textAlign: 'center',
-        verticalAlign: 'middle',
-        position: 'relative',
-        minHeight: '50%',
-        color: 'black',
-        paddingTop: '10%',
     },
     cardStyling: {
         alignItems: 'center',
         backgroundColor: 'rgba(255,255,255,0.4)',
+        minWidth: '100vw',
     },
     mobileCardStyling: {
         alignItems: 'center',
