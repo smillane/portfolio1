@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import sanityClient from '../client.js';
 import { Button, CssBaseline, Grid, makeStyles, Paper, Typography, Card, CardContent } from '@material-ui/core';
-import heroImage from '../images/ladybug.jpg';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import heroImage from '../images/i4h0ldqstco61.png';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,18 +26,31 @@ const useStyles = makeStyles((theme) => ({
     mainBackground: {
         backgroundImage: `url(${heroImage})`,
         backgroundRepeat: 'no-repeat',
-        backgroundsize: 'cover',
+        backgroundsize: '100%',
         backgroundPosition: 'center top',
         minHeight: '100vh',
         minWidth: '10vh',
+        display: 'flex',
+        alignItems: 'baseline',
+        justifyContent: 'center',
     },
     cardStyling: {
         backgroundColor: 'rgba(255,255,255,0.7)',
-    }
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(3),
+        paddingTop: theme.spacing(),
+        paddingBottom: theme.spacing(2),
+    },
+    vwSizing: {
+        width: '80vw',
+    },
 }));
 
 export default function Projects() {
     const classes = useStyles();
+    const deviceCardStyling = window.innerWidth >= 650 ? '100%' : 'auto';
+    const deviceContainerStyling = window.innerWidth >= 650 ? '80%' : 'auto';
+    const deviceBackgroundSyling = window.innerWidth >= 650 ? 'no-repeat' : 'repeat-y';
     const [projectData, setProjectData] = useState(null);
 
     useEffect(() => {
@@ -54,7 +67,7 @@ export default function Projects() {
     }, []);
 
     const displayprojects = projectData && projectData.map((project, index) => (
-        <Grid item xs={8} sm={6} md={4} lg={3} xl={3} key={index} className = {classes.gridStyling}>
+        <Grid item width={deviceCardStyling} key={index} className = {classes.gridStyling}>
             <Paper className = {classes.paperStyling} variant='elevation' elevation='10'>
                 <Typography variant='h4' align='justify' href = {project.link} alt = {project.title} target = '_blank' rel = 'noopener noreferrer'>
                     {project.title}
@@ -74,37 +87,39 @@ export default function Projects() {
     ));
 
     return (
-        <main className = {classes.mainBackground}>
+        <main className={classes.mainBackground} style={{ backgroundsize: deviceBackgroundSyling}}>
+            <div className={classes.vwSizing}>
             <CssBaseline />
-            <section>
-                <Grid
-                container
-                spacing = {0}
-                alignItems = 'center'
-                justify = 'center'
-                style={{ minHeight: '20vh' }}
-                >
-                    <Grid item xs={10} sm={8} md={6} lg={4} xl={3} >
-                        <Card className = {classes.cardStyling}>
-                            <CardContent className = {classes.textStyle}>
-                                <Typography variant='h1' align='center' color='inherit'>My Projects</Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                </Grid>
-                <section className = {classes.root}>
-                    <Grid 
-                        container
-                        direction = 'row'
-                        wrap = 'wrap'
-                        justify = 'center'
-                        alignItems = 'center'
-                        spacing = {0}
+                <div width={deviceContainerStyling}>
+                    <Grid
+                    container
+                    spacing = {0}
+                    alignItems = 'center'
+                    justify = 'center'
+                    style={{ minHeight: '20vh' }}
                     >
-                        {displayprojects}
+                        <Grid item width={deviceCardStyling}>
+                            <Card className = {classes.cardStyling}>
+                                <CardContent>
+                                    <Typography variant='h1' align='center' color='inherit'>My Projects</Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
                     </Grid>
-                </section>
-            </section>
-        </main>
+                    <section className = {classes.root}>
+                        <Grid 
+                            container
+                            direction = 'row'
+                            wrap = 'wrap'
+                            justify = 'center'
+                            alignItems = 'center'
+                            spacing = {0}
+                        >
+                            {displayprojects}
+                        </Grid>
+                    </section>
+                </div>
+        </div>
+    </main>
     );
 }

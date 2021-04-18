@@ -1,10 +1,11 @@
 import React from "react";
 import { Card, CardContent, makeStyles, Typography, Grid } from "@material-ui/core";
-import heroImage from '../images/rockclimb2.jpg';
+import heroImage from '../images/tizoc0t311c51.png';
 
-const useStyles = makeStyles( {
+const useStyles = makeStyles((theme) => ({
     root: {
         backgroundImage: `url(${heroImage})`,
+        backgroundColor: '#0F1921',
         backgroundRepeat: 'no-repeat',
         backgroundsize: 'cover',
         backgroundPosition: 'center top',
@@ -12,11 +13,8 @@ const useStyles = makeStyles( {
         minWidth: '10vh',
     },
     textStyle: {
-        verticalAlign: 'middle',
-        position: 'relative',
-        minHeight: '50%',
         color: 'black',
-        paddingTop: '10%',
+        padding: theme.spacing(3),
         opacity: '1.0',
     },
     cardStyling: {
@@ -24,10 +22,11 @@ const useStyles = makeStyles( {
         paddingLeft: '5%',
         paddingRight: '5%',
     }
-});
+}));
 
 export default function About() {
     const classes = useStyles();
+    const deviceCardStyling = window.innerWidth >= 650 ? '100%' : 'auto%';
     return (
         <main className = {classes.root}>
             <Grid
@@ -35,9 +34,9 @@ export default function About() {
             spacing = {0}
             alignItems = 'center'
             justify = 'center'
-            style={{ minHeight: '35vh' }}
+            style={{ paddingTop: '5%'}}
             >
-                <Grid item xs={8} sm={6} md={4} lg={5} xl={3} >
+                <Grid item width={deviceCardStyling}>
                     <Card className = {classes.cardStyling} variant='elevation' elevation='10'>
                         <CardContent className = {classes.textStyle}>
                             <Typography variant='h4' align='left' gutterBottom>My hobbies include cooking, gaming, bouldering, reading, running, programming, and building computers.</Typography>
