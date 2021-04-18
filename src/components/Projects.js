@@ -40,12 +40,13 @@ export default function Projects() {
     const deviceCardStyling = window.innerWidth >= 650 ? '100%' : 'auto';
     const deviceContainerStyling = window.innerWidth >= 650 ? '80%' : '100%';
     const deviceBackgroundSyling = window.innerWidth >= 650 ? 'no-repeat' : 'repeat-y';
+    const deviceDisplayWidth = window.innerWidth >= 650 ? '70vw' : '100vw';
+    const deviceColorWidth = window.innerWidth >= 650 ? 'white' : '#243F4E';
     const [projectData, setProjectData] = useState(null);
 
     useEffect(() => {
         sanityClient.fetch(`*[_type == 'project']{
             title,
-            date,
             description1,
             description2,
             description3,
@@ -73,8 +74,8 @@ export default function Projects() {
     ));
 
     return (
-        <main className={classes.mainBackground} style={{ backgroundsize: deviceBackgroundSyling, backgroundColor: '#243F4E'}}>
-            <div className={classes.vwSizing}>
+        <main className={classes.mainBackground} style={{ backgroundsize: deviceBackgroundSyling, backgroundColor: deviceColorWidth}}>
+            <div style= {{ width: deviceDisplayWidth, backgroundColor: '#243F4E' }}>
             <CssBaseline />
                 <div width={deviceContainerStyling}>
                     <Grid
@@ -92,8 +93,8 @@ export default function Projects() {
                             </Card>
                         </Grid>
                     </Grid>
-                    <section className = {classes.root} style={{ minHeight: '20vh'}}>
-                        <Box display="flex" flexDirection="row" flexWrap="wrap" justifyContent="center" m={1} p={1} css={{ maxWidth: 800 }}>
+                    <section className = {classes.root} style={{ minHeight: '20vh' }}>
+                        <Box display="flex" flexDirection="row" flexWrap="wrap" justifyContent="center" m={1} p={1} css={{ maxWidth: 850 }}>
                             {displayprojects}
                         </Box>
                     </section>
