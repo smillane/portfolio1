@@ -8,17 +8,13 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         overflow: 'hidden',
-        padding: theme.spacing(0, 3),
     },
     gridStyling: {
         padding: theme.spacing(1),
         margin: theme.spacing(1),
     },
     paperStyling: {
-        paddingLeft: theme.spacing(3),
-        paddingRight: theme.spacing(3),
-        paddingTop: theme.spacing(),
-        paddingBottom: theme.spacing(2),
+        padding: theme.spacing(3),
     },
     preOverFlow: {
         overflow: 'visible',
@@ -36,10 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
     cardStyling: {
         backgroundColor: 'rgba(255,255,255,0.7)',
-        paddingLeft: theme.spacing(3),
-        paddingRight: theme.spacing(3),
-        paddingTop: theme.spacing(),
-        paddingBottom: theme.spacing(2),
+        padding: theme.spacing(3),
     },
     vwSizing: {
         width: '80vw',
