@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, Grid, Typography, Card, CardContent } from "@material-ui/core";
-import heroImage from '../images/7fvkuquslyk51.png';
+import heroImage from '../images/7fvkuquslyk51.jpg';
 
 const useStyles = makeStyles( {
     root: {

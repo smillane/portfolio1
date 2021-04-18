@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent, makeStyles, Typography, Grid } from "@material-ui/core";
-import heroImage from '../images/tizoc0t311c51.png';
+import heroImage from '../images/tizoc0t311c51.jpg';
 
 const useStyles = makeStyles((theme) => ({
     root: {

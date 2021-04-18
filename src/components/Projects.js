@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import sanityClient from '../client.js';
 import { Button, CssBaseline, Grid, makeStyles, Paper, Typography, Card, CardContent } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import heroImage from '../images/i4h0ldqstco61.png';
+import heroImage from '../images/i4h0ldqstco61.jpg';
 
 const useStyles = makeStyles((theme) => ({
     root: {
