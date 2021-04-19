@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundsize: 'cover',
         backgroundPosition: 'center top',
-        minHeight: '90vh',
+        minHeight: '95vh',
         minWidth: '10vh',
     },
     textStyle: {
