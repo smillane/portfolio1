@@ -57,7 +57,7 @@ export default function Projects() {
     }, []);
 
     const displayprojects = projectData && projectData.map((project, index) => (
-        <Box m={1} p={1} width={deviceCardStyling} key={index}>
+        <Box item m={1} p={1} width={deviceCardStyling} key={index}>
             <Paper className={classes.projectCardStyling} variant='elevation' elevation='10'>
                 <Typography gutterBottom variant='h4' align='justify' href={project.link} alt={project.title} target = '_blank' rel = 'noopener noreferrer'>
                     {project.title}
