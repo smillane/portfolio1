@@ -41,7 +41,7 @@ export default function Home() {
                     <Card className={classes.cardStyling} variant='elevation' elevation='10'>
                         <CardContent className = {classes.textStyle}>
                         <Typography variant='h3' align='center' gutterBottom>Sean Millane</Typography>
-                            <Typography variant='h4' align='center' gutterBottom>Software Engineer working at BenefitFocus</Typography>
+                            <Typography variant='h4' align='center' gutterBottom>Software Engineer at BenefitFocus</Typography>
                             <Typography variant='h4' align='center' gutterBottom>Former Civil Engineer, now a self-taught Software Engineer, with a passion for technology</Typography>
                         </CardContent>
                     </Card>
