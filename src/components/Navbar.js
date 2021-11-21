@@ -73,16 +73,6 @@ export default function Navbar() {
     <AppBar position="static" color='transparent'>
       <CssBaseline />
       <Toolbar>
-        <div>
-          {['left'].map((anchor) => (
-            <React.Fragment key={anchor}>
-              <IconButton onClick={toggleDrawer(anchor, true)}><MenuIcon color='inherit' /></IconButton>
-              <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-                {list(anchor)}
-              </Drawer>
-            </React.Fragment>
-          ))}
-        </div>
         <Typography variant="h6" className={classes.title}>
           {window.location.pathname.substring(1)}
         </Typography>
