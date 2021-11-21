@@ -44,29 +44,6 @@ export default function Navbar() {
 
     setState({ ...state, [anchor]: open });
   };
-
-  const list = (anchor) => (
-    <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-      })}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-          <ListItem button component={NavLink} to='/' >
-            <ListItemText primary='Home'/>
-          </ListItem>
-          <ListItem button component={NavLink} to='/Projects' >
-            <ListItemText primary='Projects'/>
-          </ListItem>
-          <ListItem button component={NavLink} to='/About' >
-            <ListItemText primary='About'/>
-          </ListItem>
-      </List>
-    </div>
-  );
   
   return (
     <AppBar position="static" color='transparent'>
